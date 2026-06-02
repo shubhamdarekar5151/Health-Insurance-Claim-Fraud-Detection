@@ -1,0 +1,28 @@
+# Core data / ML
+pandas==2.2.3
+numpy==1.26.4
+scikit-learn==1.5.2
+xgboost==2.1.2
+imbalanced-learn==0.12.4
+shap==0.46.0
+optuna==4.1.0
+joblib==1.4.2
+pyarrow==18.0.0
+
+# Dashboard
+streamlit==1.40.0
+streamlit-autorefresh==1.0.1
+plotly==5.24.1
+
+# DB
+SQLAlchemy==2.0.36
+
+# Notebooks / EDA
+jupyter==1.1.1
+matplotlib==3.9.2
+seaborn==0.13.2
+tqdm==4.67.0
+
+# Dataset download
+kaggle==1.7.4.5
+kagglehub==1.0.1
