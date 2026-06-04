@@ -16,12 +16,16 @@ put and gets retried on the next poll.
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 import time
 from pathlib import Path
 from typing import Iterable
 
-DEFAULT_DB = "claims.db"
+# Path to the shared SQLite database. Overridable via the CLAIMS_DB
+# environment variable so the producer, consumer, and dashboard can be
+# pointed at a common location (e.g. a mounted volume under Docker).
+DEFAULT_DB = os.environ.get("CLAIMS_DB", "claims.db")
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS claims_pending (

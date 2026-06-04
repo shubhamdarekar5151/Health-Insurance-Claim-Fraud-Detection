@@ -1,0 +1,56 @@
+# Real-time fraud-detection demo — three processes sharing one SQLite DB.
+#
+#   producer  -> writes pending claims into the shared DB
+#   consumer  -> scores pending claims with XGBoost, writes results
+#   dashboard -> Streamlit UI reading scored claims  (http://localhost:8501)
+#
+# All three run the same image (built once) and share the `claims-db`
+# volume mounted at /data, so they read/write a single claims.db.
+#
+#   docker compose up --build
+#
+services:
+  producer:
+    build: .
+    image: fraud-demo
+    command: ["python", "-m", "src.stream.producer", "--rate", "1"]
+    environment:
+      CLAIMS_DB: /data/claims.db
+    volumes:
+      - claims-db:/data
+    restart: on-failure
+
+  consumer:
+    build: .
+    image: fraud-demo
+    # Reuse the image built by the `producer` service.
+    command: ["python", "-m", "src.stream.consumer"]
+    environment:
+      CLAIMS_DB: /data/claims.db
+    volumes:
+      - claims-db:/data
+    depends_on:
+      - producer
+    restart: on-failure
+
+  dashboard:
+    build: .
+    image: fraud-demo
+    command:
+      - streamlit
+      - run
+      - src/dashboard/app.py
+      - --server.headless=true
+      - --server.address=0.0.0.0
+      - --server.port=8501
+    environment:
+      CLAIMS_DB: /data/claims.db
+    ports:
+      - "8501:8501"
+    volumes:
+      - claims-db:/data
+    depends_on:
+      - consumer
+
+volumes:
+  claims-db:

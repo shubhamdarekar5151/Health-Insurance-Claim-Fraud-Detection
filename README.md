@@ -132,6 +132,37 @@ claims should start appearing within a minute.
 > printf '[general]\nemail = ""\n' > ~/.streamlit/credentials.toml
 > ```
 
+## Run with Docker
+
+The whole pipeline is containerised — one image, three services
+(producer, consumer, dashboard) sharing a single SQLite database on a
+named volume. The pre-trained model (`models/xgb_fraud.pkl`) and the
+engineered streams (`data/processed/`) are baked into the image, so no
+dataset download or training step is needed to run the demo.
+
+```bash
+# Build the image and start all three services
+docker compose up --build
+```
+
+Open http://localhost:8501 — flagged claims start appearing within a
+minute. Stop with `Ctrl-C`, or run detached:
+
+```bash
+docker compose up --build -d   # start in background
+docker compose logs -f consumer # watch the scoring service
+docker compose down            # stop and remove containers
+docker compose down -v         # also wipe the shared claims DB volume
+```
+
+Notes:
+
+- The producer's claim rate is set in `docker-compose.yml`
+  (`--rate 1`); raise it for a faster demo.
+- All services read/write `/data/claims.db` via the `CLAIMS_DB`
+  environment variable; the `claims-db` volume persists scored claims
+  across restarts until you run `docker compose down -v`.
+
 ## Capstone Objectives
 
 | # | Objective                          | Where it lives                                          |

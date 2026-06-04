@@ -1,0 +1,46 @@
+# Virtual envs (huge, host-specific)
+.venv/
+venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Raw data: broken symlinks into the host's kagglehub cache — not usable
+# in the image. Only data/processed/ (parquet + json) is needed at runtime.
+data/raw/
+
+# Runtime SQLite DB (rebuilt inside the container volume)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Notebooks and host-only tooling
+notebooks/
+build_report.py
+
+# Reports / binaries that don't belong in the image
+*.pdf
+*.docx
+plan.md
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml

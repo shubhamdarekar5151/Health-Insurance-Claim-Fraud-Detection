@@ -17,6 +17,7 @@ Run
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 import time
 from pathlib import Path
@@ -27,7 +28,7 @@ import plotly.graph_objects as go
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 
-DB_PATH = "claims.db"
+DB_PATH = os.environ.get("CLAIMS_DB", "claims.db")
 MODELS = Path("models")
 PLOTS = Path("docs/screenshots")
 REFRESH_MS = 2000

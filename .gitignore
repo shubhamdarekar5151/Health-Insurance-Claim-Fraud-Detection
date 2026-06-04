@@ -18,8 +18,8 @@ data/raw/*
 data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
-models/*.pkl
-models/*.json
+# models/*.pkl
+# models/*.json
 
 # SQLite runtime DB
 *.db
