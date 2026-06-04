@@ -1,0 +1,81 @@
+{
+  "pr_auc": 0.9450173762929794,
+  "roc_auc": 0.9407171723585438,
+  "n_test_claims": 133776,
+  "test_positive_rate": 0.44626838894869036,
+  "by_threshold": [
+    {
+      "threshold": 0.3,
+      "precision": 0.8132675119199104,
+      "recall": 0.8885594639865997,
+      "f1": 0.8492479608091125,
+      "accuracy": 0.8592198899653152,
+      "confusion_matrix": [
+        [
+          61896,
+          12180
+        ],
+        [
+          6653,
+          53047
+        ]
+      ]
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.8601312482075678,
+      "recall": 0.854036850921273,
+      "f1": 0.8570732158316313,
+      "accuracy": 0.8728845233823705,
+      "confusion_matrix": [
+        [
+          65785,
+          8291
+        ],
+        [
+          8714,
+          50986
+        ]
+      ]
+    },
+    {
+      "threshold": 0.7,
+      "precision": 0.9139737509650381,
+      "recall": 0.8328643216080402,
+      "f1": 0.8715359941105327,
+      "accuracy": 0.8904287764621457,
+      "confusion_matrix": [
+        [
+          69396,
+          4680
+        ],
+        [
+          9978,
+          49722
+        ]
+      ]
+    }
+  ],
+  "top_feature_importance": {
+    "prov_total_reimbursed": 0.26638737320899963,
+    "prov_total_deductible": 0.13699181377887726,
+    "prov_n_unique_bene": 0.07674046605825424,
+    "prov_max_reimbursed": 0.04408307000994682,
+    "prov_n_unique_dx1": 0.04108339175581932,
+    "prov_n_claims": 0.039272699505090714,
+    "prov_claims_per_active_day": 0.03770824149250984,
+    "prov_mean_n_diagnoses": 0.03362194821238518,
+    "prov_bene_per_claim": 0.032126981765031815,
+    "prov_mean_reimbursed": 0.026323972269892693,
+    "prov_mean_stay_days_inpat": 0.026140710338950157,
+    "prov_mean_claim_duration": 0.02444649673998356,
+    "prov_std_reimbursed": 0.02218577452003956,
+    "prov_n_unique_attending": 0.020668625831604004,
+    "prov_pct_inpatient": 0.020403912290930748,
+    "prov_mean_patient_n_chronic": 0.018937472254037857,
+    "prov_pct_patient_dead": 0.0187926534563303,
+    "prov_modal_state": 0.018421323969960213,
+    "prov_mean_n_procedures": 0.017734287306666374,
+    "prov_mean_patient_age": 0.016432052478194237
+  }
+}

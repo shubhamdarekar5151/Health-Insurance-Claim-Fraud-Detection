@@ -1,0 +1,23 @@
+{
+  "best_params": {
+    "max_depth": 6,
+    "learning_rate": 0.262516606324193,
+    "min_child_weight": 8,
+    "subsample": 0.8394633936788146,
+    "colsample_bytree": 0.6624074561769746,
+    "gamma": 0.7799726016810132,
+    "reg_lambda": 0.7613762547568976
+  },
+  "scale_pos_weight": 1.9550612054879553,
+  "best_iteration": 9,
+  "val_pr_auc": 0.9421093056525103,
+  "val_roc_auc": 0.9481724349195428,
+  "n_train_claims": 323724,
+  "n_val_claims": 100711,
+  "n_train_providers": 3462,
+  "n_val_providers": 866,
+  "feature_count": 43,
+  "n_optuna_trials": 20,
+  "study_best_value": 0.9421093056525103,
+  "elapsed_seconds": 105.94607329368591
+}
